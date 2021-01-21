@@ -1,19 +1,19 @@
 package com.gremlin.quotely.forismatic;
 
 import java.util.Arrays;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * Supported languages and html equivalent for Forismatic.
+ */
+@AllArgsConstructor
 public enum Language {
     ENGLISH("English", "en"),
     RUSSIAN("Russian", "ru");
 
     @Getter private final String text;
     @Getter private final String urlText;
-
-    Language(String text, String urlText) {
-        this.text = text;
-        this.urlText = urlText;
-    }
 
     /**
      * Retrieves Enum equivalent (if exists) of provided language.

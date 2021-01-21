@@ -15,6 +15,9 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * Specific {@link QuoteGrabber} for Forismatic.
+ */
 public class ForismaticQuoteGrabber extends QuoteGrabber {
     private final URI quoteUrl;
     private final String quoteText;
@@ -23,6 +26,14 @@ public class ForismaticQuoteGrabber extends QuoteGrabber {
 
     @Autowired private ObjectMapper mapper;
 
+    /**
+     * Constructor for {@link ForismaticQuoteGrabber}.
+     *
+     * @param quoteUrl the API URL for Forismatic to retrieve quote
+     * @param quoteText the key in the response map to get quote
+     * @param quoteAuthor the key in the response map to get author
+     * @param client an HTTP client in order to make the API call
+     */
     public ForismaticQuoteGrabber(String quoteUrl, String quoteText, String quoteAuthor, CloseableHttpClient client) {
         this.quoteUrl = URI.create(quoteUrl);
         this.quoteText = quoteText;

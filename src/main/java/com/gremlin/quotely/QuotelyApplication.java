@@ -7,6 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * The starting point for the "quotely" application.
+ */
 @SpringBootApplication
 public class QuotelyApplication implements CommandLineRunner {
 	@Autowired private QuoteGrabber quoteGrabber;
@@ -27,6 +30,6 @@ public class QuotelyApplication implements CommandLineRunner {
 
 		Quote quote = quoteGrabber.getQuote(args[0]);
 
-		System.out.printf("%n\"%s\"\n- %s%n", quote.getQuote(), quote.getAuthor());
+		System.out.printf("%nQuote:%n\"%s\"\n- %s%n", quote.getQuote(), quote.getAuthor());
 	}
 }
