@@ -7,7 +7,7 @@ public enum Language {
     ENGLISH("English", "en"),
     RUSSIAN("Russian", "ru");
 
-    private final String text;
+    @Getter private final String text;
     @Getter private final String urlText;
 
     Language(String text, String urlText) {

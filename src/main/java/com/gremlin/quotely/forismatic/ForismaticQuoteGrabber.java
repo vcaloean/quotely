@@ -20,13 +20,15 @@ public class ForismaticQuoteGrabber extends QuoteGrabber {
     private final URI quoteUrl;
     private final String quoteText;
     private final String quoteAuthor;
+    private final CloseableHttpClient client;
 
     @Autowired private ObjectMapper mapper;
 
-    public ForismaticQuoteGrabber(String quoteUrl, String quoteText, String quoteAuthor) {
+    public ForismaticQuoteGrabber(String quoteUrl, String quoteText, String quoteAuthor, CloseableHttpClient client) {
         this.quoteUrl = URI.create(quoteUrl);
         this.quoteText = quoteText;
         this.quoteAuthor = quoteAuthor;
+        this.client = client;
     }
 
     @Override
@@ -44,12 +46,12 @@ public class ForismaticQuoteGrabber extends QuoteGrabber {
             .collect(joining("&"));
 
         Map<String, String> response;
-        try (CloseableHttpClient client = HttpClients.createDefault()) {
+        try (client) {
             response = client.execute(new HttpPost(quoteUrl + "?" + requestBody), httpResponse ->
                 mapper.readValue(httpResponse.getEntity().getContent(), Map.class)
             );
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error in calling url: " + e);
             return null;
         }
 

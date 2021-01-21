@@ -17,6 +17,14 @@ public class QuotelyApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
+		if (args.length == 0) {
+			throw new IllegalArgumentException("Arguments cannot be empty");
+		}
+
+		if (args.length > 1) {
+			throw new IllegalArgumentException("Expecting 1 argument, but given " + args.length);
+		}
+
 		Quote quote = quoteGrabber.getQuote(args[0]);
 
 		System.out.printf("%n\"%s\"\n- %s%n", quote.getQuote(), quote.getAuthor());

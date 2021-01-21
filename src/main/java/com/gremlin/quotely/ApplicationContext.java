@@ -3,6 +3,7 @@ package com.gremlin.quotely;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gremlin.quotely.forismatic.ForismaticQuoteGrabber;
 import com.gremlin.quotely.quotes.QuoteGrabber;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,8 @@ public class ApplicationContext {
 
     @Bean
     public QuoteGrabber quoteGrabber() {
-        return new ForismaticQuoteGrabber("http://api.forismatic.com/api/1.0/", "quoteText", "quoteAuthor");
+        return new ForismaticQuoteGrabber(
+            "http://api.forismatic.com/api/1.0/", "quoteText", "quoteAuthor", HttpClients.createDefault()
+        );
     }
 }
