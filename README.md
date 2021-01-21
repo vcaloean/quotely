@@ -6,3 +6,7 @@ In order to run use the command:
 `./gradlew bootRun --args='<language>'`
 
 The application can support either "English" or "Russian" (case-insensitive).
+
+Alternatively, this command will default to "English":
+
+`./gradlew bootRun`
