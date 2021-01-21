@@ -9,7 +9,6 @@ import static org.mockito.Mockito.mock;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gremlin.quotely.quotes.Quote;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;

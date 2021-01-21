@@ -13,7 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class ForismaticQuoteGrabber extends QuoteGrabber {
